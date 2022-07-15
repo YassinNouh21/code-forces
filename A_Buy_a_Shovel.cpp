@@ -19,24 +19,26 @@
 using namespace std;
 
 main() {
-    IOS int length, distinct;
-    cin >> length >> distinct;
-    char dis[distinct];
-    for (int i = 0; i < distinct; i++) {
-        dis[i] = (char)(97 + i);
-    }
-    for (int i = 0; i < length; i++) {
-        int j = i % distinct;
-        cout << dis[j];
+    IOS int price, coin;
+    cin >> price;
+    cin >> coin;
+
+    for (int i = 1; i < 1000; i++) {
+        int divisible_by_10 = ((price * i) % 10);
+        if (divisible_by_10 == coin || divisible_by_10 == 0) {
+            cout << i;
+            break;
+        }
     }
 }
 
-//! COUNT SUBMIT: 1
-//! READING TIME: 2
-//! THINKING TIME: 5
-//! CODING TIME:7
-//! DEBUG TIME: 0 
+//! COUNT SUBMIT:
+//! READING TIME:
+//! THINKING TIME:
+//! CODING TIME:
+//! DEBUG TIME:
 //! TOTAL TIME:
 
 /* NOTES
+
 */
