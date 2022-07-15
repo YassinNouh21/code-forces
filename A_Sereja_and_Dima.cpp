@@ -18,7 +18,7 @@ main() {
             player_one.push_back(temp_vector.back());
             temp_vector.pop_back();
         } else {
-            player_one.push_back(temp   _vector.front());
+            player_one.push_back(temp_vector.front());
             temp_vector.erase(begin(temp_vector));
         }
         if (temp_vector.back() >= temp_vector.front()) {
