@@ -5,7 +5,7 @@ main() {
     string inp;
     cin >> inp;
     int countDistinct = 0;
-    set<char> single_characher;
+    set  single_characher;
 
     for (int i = 0; i < inp.length(); i++) {
         single_characher.insert(inp[i]);
