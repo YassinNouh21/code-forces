@@ -45,7 +45,7 @@ main() {
 //! THINKING TIME: 10
 //! CODING TIME: 10
 //! DEBUG TIME: 5
-//! TOTAL TIME: 
+//! TOTAL TIME:
 
 /* NOTES
  read the quote of int and long
