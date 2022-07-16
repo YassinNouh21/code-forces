@@ -36,7 +36,7 @@ main() {
             dist_set.insert(inp[i]);
         }
     }
-    cout << dist_set.size();
+    cout<< dist_set.size();
 }
 
 //! COUNT SUBMIT:

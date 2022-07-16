@@ -24,6 +24,7 @@
         "set": "cpp",
         "algorithm": "cpp",
         "iomanip": "cpp",
-        "queue": "cpp"
+        "queue": "cpp",
+        "ostream": "cpp"
     }
 }
