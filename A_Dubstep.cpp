@@ -19,27 +19,22 @@
 using namespace std;
 
 main() {
-    IOS int size;
-    cin >> size;
-    string arr[size];
-    for (int i = 0; i < size; i++) cin >> arr[i];
-    string temp = arr[0];
+    IOS string inp;
+    cin >> inp;
+    string wub = "WUB";
+    string temp = "";
     int count = 0;
-    string temp2;
-
-    for (int i = 0; i < size; i++) {
-        if (arr[i] == temp)
+    for (int i = 0; i < inp.length(); i++) {
+        if (inp[i] == wub[0] && inp[i + 1] == wub[1] && inp[i + 2] == wub[2]) {
+            i += 2;
             count++;
-        else {
-            temp2 = arr[i];
+            continue;
         }
+        if (count >= 1) cout << " ";
+        count = 0;
+
+        cout << inp[i];
     }
-    if (count >= size / 2 + 1)
-        cout << temp;
-    else {
-        cout << temp2;
-    }
-    return 0;
 }
 
 //! COUNT SUBMIT:

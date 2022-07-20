@@ -8,6 +8,7 @@
 #include <list>
 #include <map>
 #include <queue>
+#include <set>
 #include <sstream>
 #include <stack>
 #include <utility>
@@ -19,27 +20,26 @@
 using namespace std;
 
 main() {
-    IOS int size;
-    cin >> size;
-    string arr[size];
-    for (int i = 0; i < size; i++) cin >> arr[i];
-    string temp = arr[0];
-    int count = 0;
-    string temp2;
+    IOS int size1, size2;
+    cin >> size1 >> size2;
+    set<char> colors;
 
-    for (int i = 0; i < size; i++) {
-        if (arr[i] == temp)
-            count++;
-        else {
-            temp2 = arr[i];
+    for (int i = 0; i < size1 * size2; i++) {
+        char temp;
+        cin >> temp;
+        colors.insert(temp);
+    }
+    int counter = 0;
+    for (auto it = colors.begin(); it != colors.end(); it++) {
+        if (*it == 'W' || *it == 'G' || *it == 'B') {
+            counter++;
         }
     }
-    if (count >= size / 2 + 1)
-        cout << temp;
-    else {
-        cout << temp2;
+    if (counter <= 3 && counter >= 1 && counter == colors.size()) {
+        cout << "#Black&White";
+    } else {
+        cout << "#Color";
     }
-    return 0;
 }
 
 //! COUNT SUBMIT:

@@ -19,27 +19,13 @@
 using namespace std;
 
 main() {
-    IOS int size;
-    cin >> size;
-    string arr[size];
-    for (int i = 0; i < size; i++) cin >> arr[i];
-    string temp = arr[0];
-    int count = 0;
-    string temp2;
-
-    for (int i = 0; i < size; i++) {
-        if (arr[i] == temp)
-            count++;
-        else {
-            temp2 = arr[i];
-        }
+    IOS long long inp;
+    cin >> inp;
+    if (inp % 2 == 0) {
+        cout << inp / 2;
+    } else {
+        cout << ((inp / 2) +1 ) * -1;
     }
-    if (count >= size / 2 + 1)
-        cout << temp;
-    else {
-        cout << temp2;
-    }
-    return 0;
 }
 
 //! COUNT SUBMIT:
