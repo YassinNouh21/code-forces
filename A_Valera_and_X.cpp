@@ -8,6 +8,7 @@
 #include <list>
 #include <map>
 #include <queue>
+#include <set>
 #include <sstream>
 #include <stack>
 #include <utility>
@@ -21,41 +22,45 @@ using namespace std;
 main() {
     IOS int size;
     cin >> size;
-    bool is_diagonal = true;
-    bool is_not_diagonal = true;
-    char diagonal;
-    char not_diagonal;
+    bool not_symmetic = true;
+
+    set<char> diagonal;
+    set<char> not_diagonal;
     for (int i = 0; i < size; i++) {
         string element;
         cin >> element;
+        int temp = 0;
         for (int k = 0; k < size; k++) {
-            if ((i == k) || (i + k == size -1) && (i == 0)) {
-                diagonal = element[k];
+            if (i == k) {
+                diagonal.insert((char)element[k]);
+                temp = i;
+
+            } else if (i + k == size - 1) {
+                diagonal.insert((char)element[k]);
+
             } else {
-                if ((i == 0)) {
-                    not_diagonal = element[k];
-                }
+                not_diagonal.insert((char)element[k]);
             }
-            if ((i == k && diagonal != element[k]) ||
-                (i + k == size -1 && diagonal != element[k])) {
-                is_diagonal = false;
-                break;
-            } else {
-                if ((i == k) || (i + k == size)) {
-                } else {
-                    if (not_diagonal != element[k]) {
-                        is_not_diagonal = false;
-                        break;
-                    }
-                }
-            }
+            // if (diagonal.size() > 1 || not_diagonal.size() > 1) {
+            //     not_symmetic = false;
+            //     break;
+            // }
         }
-        if (!is_diagonal || !is_not_diagonal) break;
+        // for (auto it = not_diagonal.begin(); it != not_diagonal.end(); it++)
+        //     cout << *it;
     }
-    if (is_not_diagonal && is_diagonal) {
-        cout << "YES";
-    } else {
+    // if(not_symmetic){
+    //     cout<< "NO";
+    // }else{
+    //     cout<<"YES";
+    // }
+    // for (auto it = diagonal.begin(); it != diagonal.end(); it++) cout << *it;
+    // for (auto it = not_diagonal.begin(); it != not_diagonal.end(); it++)
+    //     cout << *it;
+    if (diagonal.size() > 1 || not_diagonal.size() > 1 ||*diagonal.begin() == *not_diagonal.begin() ) {
         cout << "NO";
+    } else {
+        cout << "YES";
     }
 }
 
