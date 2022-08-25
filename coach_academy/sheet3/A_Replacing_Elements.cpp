@@ -24,8 +24,6 @@ using namespace std;
 //print vector
 template <typename T>
 void print_v(vector<T>& v) { cout << "{"; for (auto x : v) cout << x << ","; cout << "\b}"; };
-template <typename T>
-void print_s(set<T>& v) { cout << "{"; for (auto x : v) cout << x << ","; cout << "\b}"; };
 //print array
 template <typename T>
 void print(const T array[], size_t SIZE) { for (size_t i = 0; i < SIZE; i++)   std::cout << array[i] << " "; }
@@ -51,61 +49,41 @@ typedef unsigned long int uint32;
 typedef long long int int64;
 typedef unsigned long long int  uint64;
 
+/* clang-format on */
 
 /* Main()  function */
 int main() {
-    freopen("speeding.in", "r", stdin);
-    freopen("speeding.out", "w", stdout);
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt","w",stdout);
     int t;
     cin >> t;
-    int ts;
-    cin >> ts;
-    ll s1[t + 1][2];
-    int s2[ts + 1][2];
-    s1[0][0] = 0;
-    s2[0][0] = 0;
-    f(i, 1, t + 1) {
-        int a = 0, b;
+    while (t--) {
+        int a, b;
         cin >> a >> b;
-        s1[i][0] = s1[i - 1][0] + a;
-        s1[i][1] = b;
-    }
-    f(i, 1, ts + 1) {
-        int a = 0, b;
-        cin >> a >> b;
-        s2[i][0] = s2[i - 1][0] + a;
-        s2[i][1] = b;
-    }
-    ll sp1[100];
-    ll sp2[100];
+        int arr[a];
+        f(i, 0, a) {
+            cin >> arr[i];
+        }
+        sort(arr, arr + a);
+        bool form = false;
+        bool all_are_less = true;
+        f(i, 0, a) {
+            if (arr[i] + arr[i + 1] <= b) {
+                // yes();
+                bool form = true;
+                break;
+            }
+            else if (arr[i] > b) {
+                all_are_less = false;
+            }
 
-    f(i, 0, t) {
-        int end = abs((s1[i][0] - s1[i + 1][0]));
-        int j = s1[i][0];
-        while (end--) {
-            sp1[j] = s1[i + 1][1];
-            j++;
+        }
+        if (form) {
+            yes();
+        }
+        else {
+            all_are_less ? yes() : no();
         }
     }
-    f(i, 0, ts) {
-        int end = abs((s2[i][0] - s2[i + 1][0]));
-        int j = s2[i][0];
-        while (end--) {
-            sp2[j] = s2[i + 1][1];
-            j++;
-        }
-    }
-    // print(sp1, 100);
-    // cout << endl;
-    // print(sp2, 100);
-    si dis;
-    f(i, 0, 100) {
-        if (sp2[i] > sp1[i]) {
-            dis.insert(sp2[i] - sp1[i]);
-        }
-    }
-    // print_s(dis);
-    cout << *max_element(dis.begin(), dis.end());
-
     return 0;
 }
