@@ -50,53 +50,27 @@ typedef long long int int64;
 typedef unsigned long long int  uint64;
 
 /* clang-format on */
-struct cow {
-    ll t1;
-    ll t2;
-    ll b;
 
-    std::string toString() {
-        return "t1: " + to_string(t1) + "t2: " + std::to_string(t2) +
-               "b: " + std::to_string(b) + "\n";
-    }
-};
-ll max_ll(ll a, ll b) {
-    if (a > b) return a;
-    return b;
-}
-
-int interl(cow c1, cow c2) {
-    if (c1.t2 > c2.t1) {
-        return c1.b + c2.b;
-    } else {
-        return max_ll(c1.b, c2.b);
-    }
-}
 /* Main()  function */
-bool sort_struct(cow &c1, cow &c2) {
-    if (c1.t1 < c2.t1) return true;
-    return false;
-}
 int main() {
-    freopen("blist.in", "r", stdin);
-    freopen("blist.out", "w", stdout);
-    ll t;
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt","w",stdout);
+    int t;
     cin >> t;
-    cow cows[t];
-    f(i, 0, t) {
-        cow c;
-        cin >> c.t1 >> c.t2 >> c.b;
-        cows[i] = c;
+    while (t--) {
+        string t;
+        string n;
+        int i;
+        cin >> i;
+        cin >> t;
+        cin >> n;
+        if (count(t.begin(), t.end(), '0') == count(n.begin(), n.end(), '0') &&
+            count(t.begin(), t.end(), '1') == count(n.begin(), n.end(), '1')) {
+            yes();
+        } else {
+            no();
+        }
     }
-    ll maxx = 0;
-    sort(cows, cows + t, sort_struct);
-    f(i, 0, t) {
-        cout << cows[i].t1 << " " << cows[i].t2 << " " << cows[i].b << endl;
-    }
-    vi sum;
 
-    f(i, 0, t - 1) { sum.push_back(interl(cows[i], cows[i + 1])); }
-    cout << *max_element(sum.begin(), sum.end());
-
-     return 0;
+    return 0;
 }
