@@ -12,11 +12,6 @@ using namespace std;
 #define mii map<int, int>
 #define si set<int>
 #define sc set<char>
-typedef unsigned long long ull;
-typedef vector<ll> vl;
-typedef vector<char> vc;
-typedef vector<string> vs;
-typedef vector<int>::iterator vit;
 
 /* FUNCTIONS */
 #define f(i,s,e) for(long long int i=s;i<e;i++)
@@ -26,10 +21,13 @@ typedef vector<int>::iterator vit;
 #define eb emplace_back
 
 /* PRINTS */
-template <class T>
-void print_v(vector<T>& v) { cout << "{"; for (auto x : v) cout << x << ","; cout << "\b}"; }
+//print vector
+template <typename T>
+void print_v(vector<T>& v) { cout << "{"; for (auto x : v) cout << x << ","; cout << "\b}"; };
+//print array
+template <typename T>
+void print(const T array[], size_t SIZE) { for (size_t i = 0; i < SIZE; i++)   std::cout << array[i] << " "; }
 
-/* UTILS */
 #define MOD 1000000007
 #define PI 3.1415926535897932384626433832795
 #define read(type) readInt<type>()
@@ -52,7 +50,7 @@ typedef long long int int64;
 typedef unsigned long long int  uint64;
 
 /* clang-format on */
-int binary(int arr[], int l, int r, int x) {
+ll binary(vector<ll>& arr, ll l, ll r, ll x) {
 
     if (r >= l) {
         int mid = l + (r - l) / 2;
@@ -65,33 +63,19 @@ int binary(int arr[], int l, int r, int x) {
 
         return binary(arr, mid + 1, r, x);
     }
-    cout << l << " " << r << endl;
-    return abs(x - arr[l]) <= abs(x - arr[r]) ? arr[l] : arr[r];
+    // cout << l << " " << r << endl;
+    return min(arr[l], arr[r]);
     //  4          1 
 }
 /* Main()  function */
 int main() {
-#ifndef ONLINE_JUDGE
-    freopen("mixmilk.in", "r", stdin);
-    freopen("mixmilk.out", "w", stdout);
-#endif
-    ll a, aa, b, bb, c, cc;
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt","w",stdout);
 
-    cin >> a >> aa >> b >> bb >> c >> cc;
-    ll arr[3] = { aa, bb, cc };
-    ll arr_bound[3] = { a, b, c };
-    f(i, 0, 100) {
-        int temp = arr[(i % 3)] + arr[(i + 1) % 3];
-        if (temp > arr_bound[(i + 1) % 3]) {
-            arr[(i + 1) % 3] = arr_bound[(i + 1) % 3];
-            arr[i % 3] = temp - arr_bound[(i + 1) % 3];
-        }
-        else {
-            arr[i % 3] = 0;
-            arr[(i + 1) % 3] = temp;
-        }
-    }
-    cout << arr[0] << endl << arr[1] << endl << arr[2];
-
+    vector<ll> arr = { 1,4,7,8,20 };
+    ll f = 3;
+    cout << arr.size();
+    ll in = binary(arr, 0, sizeof(arr) / sizeof(arr[0]), f);
+    // cout << (in);
     return 0;
 }
