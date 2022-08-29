@@ -28,14 +28,23 @@ typedef set<int>::iterator sit;
 #define rf(i,e,s) for(long long int i=e-1;i>=s;i--)
 #define pb push_back
 #define eb emplace_back
+#define ff first
+#define s second
 
 //! PRINTS 
+#define sp <<" "<<
+#define ss <<
+#define e << endl
+#define endl '\n'
 //print vector
 template <typename T>
 void print_v(vector<T>& v) { cout << "{"; for (auto x : v) cout << x << ","; cout << "\b}"; };
 //print set
 template <typename T>
 void print_s(set<T>& v) { cout << "{"; for (auto x : v) cout << x << ","; cout << "\b}"; };
+//print map
+template <typename T, typename J>
+void print_m(map<T, J>& map) { cout << "{"; for (auto x = map.cbegin(); x != map.cend(); ++x) cout << x->first << " " << x->second.first << " " << x->second.second << "\n"; };
 //print array
 template <typename T>
 void print(const T array[], size_t SIZE) { for (size_t i = 0; i < SIZE; i++)   std::cout << array[i] << " "; }
@@ -68,47 +77,59 @@ void u_file(string s) {
 }
 
 /* clang-format on */
-bool is_overlapped(pll p1, pll p2) {
-    if (p1.first <= p2.second) return true;
-    if (p1.second <= p2.first) return true;
-    return false;
-}
+// void count(int arr[], map<pii, int>& m) {
+//     int size = sizeof(arr) / sizeof(arr[0]);
+//     f(i, 0, size) {
+//         for (int j = i + 1; j < size; j++) {
+
+//         }
+//     }
+// }
 /* Main()  function */
 int main() {
-    // freopen("input.txt", "r", stdin);
-    // freopen("output.txt","w",stdout);
-    // u_file("");
-    int n;
-    cin >> n;
-    pll arr[n];
-    int count[n] = {};
-    f(i, 0, n) {
-        pll p;
-        char temp;
-        ll b;
-        ll a;
-        cin >> temp >> b;
-        if (temp == 'G') {
-            p.first = b;
-            p.second = LLONG_MAX;
+    u_file("gymnastics");
+    int k, n;
+    cin >> k >> n;
+    map<pii, int> m;
+
+
+    f(i, 0, k) {
+        int arr[n];
+        f(j, 0, n) {
+            cin >> arr[j];
         }
-        else {
-            p.first = LLONG_MIN;
-            p.second = b;
-        }
-        arr[i] = p;
-    }
-    f(i, 0, n) {
-        for (int j = i + 1; j < n;j++) {
-            cout << i << " " << j << " "<< is_overlapped(arr[i], arr[j]) << endl;
-            if (is_overlapped(arr[i], arr[j])) {
-                count[i] += 1;
-                // count[j] += 1;
+        if (i == 0) {
+
+            f(ii, 0, n) {
+                for (int jj = ii + 1; jj < n; jj++) {
+                    m.insert(make_pair(make_pair(arr[ii], arr[jj]), 0));
+                }
             }
         }
-    }
-    // print(arr, n);
-    print(count, n);
+        else {
+            f(ii, 0, n) {
+                for (int jj = ii + 1; jj < n; jj++) {
+                    // cout << "iterator " << ii sp jj e;
+                    if (m.find(make_pair(arr[ii], arr[jj])) != m.end()) {
+                        // cout << "pair" << " " << make_pair(arr[ii], arr[jj]).first << " " << make_pair(arr[ii], arr[jj]).second  e;
+                        m[make_pair(arr[ii], arr[jj])] += 1;
+                    }
+                    else {
+                        continue;
+                    }
+                }
+            }
 
+        }
+
+
+    }
+    int sum = 0;
+    for (map<pii, int>::iterator itr = m.begin(); itr != m.end(); ++itr) {
+        if (itr->second == k - 1) sum += 1;
+
+    }
+    cout << sum;
+    // print_m(m);
     return 0;
 }

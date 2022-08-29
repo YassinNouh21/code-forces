@@ -28,8 +28,14 @@ typedef set<int>::iterator sit;
 #define rf(i,e,s) for(long long int i=e-1;i>=s;i--)
 #define pb push_back
 #define eb emplace_back
+#define fi first
+#define s second
 
 //! PRINTS 
+#define sp <<" "<<
+#define ss <<
+#define e << endl
+#define endl '\n'
 //print vector
 template <typename T>
 void print_v(vector<T>& v) { cout << "{"; for (auto x : v) cout << x << ","; cout << "\b}"; };
@@ -68,47 +74,29 @@ void u_file(string s) {
 }
 
 /* clang-format on */
-bool is_overlapped(pll p1, pll p2) {
-    if (p1.first <= p2.second) return true;
-    if (p1.second <= p2.first) return true;
-    return false;
-}
+
 /* Main()  function */
 int main() {
-    // freopen("input.txt", "r", stdin);
-    // freopen("output.txt","w",stdout);
     // u_file("");
-    int n;
-    cin >> n;
-    pll arr[n];
-    int count[n] = {};
-    f(i, 0, n) {
-        pll p;
-        char temp;
-        ll b;
-        ll a;
-        cin >> temp >> b;
-        if (temp == 'G') {
-            p.first = b;
-            p.second = LLONG_MAX;
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        int arr[n];
+        f(i, 0, n) {
+            cin >> arr[i];
         }
-        else {
-            p.first = LLONG_MIN;
-            p.second = b;
-        }
-        arr[i] = p;
-    }
-    f(i, 0, n) {
-        for (int j = i + 1; j < n;j++) {
-            cout << i << " " << j << " "<< is_overlapped(arr[i], arr[j]) << endl;
-            if (is_overlapped(arr[i], arr[j])) {
-                count[i] += 1;
-                // count[j] += 1;
+        sort(arr, arr + n);
+        int min = abs(arr[0] - arr[1]);
+        f(i, 0, n - 1) {
+            if (abs(arr[i] - arr[i + 1]) < min) {
+                min = abs(arr[i] - arr[i + 1]);
             }
         }
+        cout ss min << endl;
     }
-    // print(arr, n);
-    print(count, n);
+
 
     return 0;
 }
