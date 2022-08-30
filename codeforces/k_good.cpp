@@ -28,8 +28,14 @@ typedef set<int>::iterator sit;
 #define rf(i,e,s) for(long long int i=e-1;i>=s;i--)
 #define pb push_back
 #define eb emplace_back
+#define ff first
+#define s second
 
 //! PRINTS 
+#define sp <<" "<<
+#define ss <<
+#define e << endl
+#define endl '\n'
 //print vector
 template <typename T>
 void print_v(vector<T>& v) { cout << "{"; for (auto x : v) cout << x << ","; cout << "\b}"; };
@@ -68,51 +74,33 @@ void u_file(string s) {
 }
 
 /* clang-format on */
-bool is_overlapped(pll p1, int p) {
-    if ((p1.first <= p) && (p1.second >= p)) return true;
-    return false;
-}
+
 /* Main()  function */
 int main() {
-    // freopen("input.txt", "r", stdin);
-    // freopen("output.txt","w",stdout);
-    // u_file("test");
-    int n;
-    cin >> n;
-    pll arr[n];
-    ll points[(n * 3)];
-    int maxx = 0;
-    int counnt = 0;
-    f(i, 0, n) {
-        pll p;
-        char temp;
-        ll b;
-        ll a;
-        cin >> temp >> b;
-        if (i == 0) { points[0] = b - 1; points[1] = b;points[2] = b + 1; }
-        points[i * 3] = b - 1; points[(i * 3) + 1] = b; points[(i * 3) + 2] = b + 1;
-        if (temp == 'G') {
-            p.first = b;
-            p.second = LLONG_MAX;
-        }
-        else {
-            p.first = LLONG_MIN;
-            p.second = b;
-        }
-        arr[i] = p;
-    }
-    // bool all_in_range = false;
-    int maax = 0;
-    f(i, 0, n * 3) {
-        f(j, 0, n) {
-            if (is_overlapped(arr[j], points[i])) {
-                counnt++;
+    // u_file("");
+    int t, size;
+    cin >> t >> size;
+    int count = 0;
+    while (t--) {
+        string s;
+        cin >> s;
+        sc char_set;
+        bool flag = false;
+        f(i, 0, s.length()) {
+            int num = s[i] - '0';
+            if (num <= size) {
+                flag = true;
             }
+            else {
+                flag = false;
+                break;
+            }
+
         }
-        maax = max(maax, counnt);
-        counnt = 0;
+        if (flag) count++;
+
     }
-    cout << n - maax;
+    cout << count;
 
     return 0;
 }
