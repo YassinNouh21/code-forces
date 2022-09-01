@@ -77,29 +77,17 @@ void u_file(string s) {
 
 /* Main()  function */
 int main() {
-    u_file("triangles");
+    // u_file("");
     int t;
     cin >> t;
-    vector<pii> vec;
+    int arr[t];
     f(i, 0, t) {
-        int a, b;
-        cin >> a >> b;
-        vec.push_back(make_pair(a, b));
+        cin >> arr[i];
     }
-    int maxx = 0;
     f(i, 0, t) {
-        f(j, 0, t) {
-            f(k, 0, t) {
-                if (i == j && j == k) continue;
-                if (vec[i].first != vec[j].first &&
-                    vec[i].second == vec[j].second &&
-                    vec[k].first == vec[j].first &&
-                    vec[k].second != vec[j].second) {
-                    maxx = max(abs(vec[i].first - vec[j].first) * abs(vec[j].second - vec[k].second), maxx);
-                }
-            }
+        for (int j = i + 1; j < t; j++) {
+            double avg = (double)(arr[i] + arr[j]) / (double)(j + 1);
         }
     }
-    cout << maxx;
     return 0;
 }

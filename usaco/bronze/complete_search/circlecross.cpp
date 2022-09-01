@@ -77,29 +77,34 @@ void u_file(string s) {
 
 /* Main()  function */
 int main() {
-    u_file("triangles");
-    int t;
-    cin >> t;
-    vector<pii> vec;
-    f(i, 0, t) {
-        int a, b;
-        cin >> a >> b;
-        vec.push_back(make_pair(a, b));
-    }
-    int maxx = 0;
-    f(i, 0, t) {
-        f(j, 0, t) {
-            f(k, 0, t) {
-                if (i == j && j == k) continue;
-                if (vec[i].first != vec[j].first &&
-                    vec[i].second == vec[j].second &&
-                    vec[k].first == vec[j].first &&
-                    vec[k].second != vec[j].second) {
-                    maxx = max(abs(vec[i].first - vec[j].first) * abs(vec[j].second - vec[k].second), maxx);
-                }
-            }
+    u_file("circlecross");
+    string in;
+    cin >> in;
+    map<char, int> loc1;
+    map<char, int> loc2;
+    f(i, 0, in.length()) {
+        if (loc1.find(in[i]) != loc1.end()) {
+            loc2[in[i]] = i;
         }
+        else {
+            loc1[in[i]] = i;
+
+        };
     }
-    cout << maxx;
+    // for (auto x : loc1) cout << x.first sp x.second << " ";
+    // cout  e;
+    // for (auto x : loc2) cout << x.first sp x.second << " ";
+    int count = 0;
+    f(i, 0, in.length()) {
+        i = loc1[in[i]];
+        for (int j = i + 1; j < loc2[in[i]]; j++) {
+            if (loc2[in[i]] < loc2[in[j]]) {
+                count++;
+            }
+
+        }
+
+    }
+    cout << count;
     return 0;
 }
