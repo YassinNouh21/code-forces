@@ -70,17 +70,44 @@ typedef unsigned long long int  uint64;
 // ! USACO FILE 
 void u_file(string s) {
     freopen((s + ".in").c_str(), "r", stdin);
-    // freopen((s + ".out").c_str(), "w", stdout);
+    freopen((s + ".out").c_str(), "w", stdout);
 }
 
 /* clang-format on */
 
 /* Main()  function */
 int main() {
-    // u_file("");
-    
-    set<string> s;
-
-    cout << m[make_pair(1, 2)]  e;
+    u_file("guess");
+    int t;
+    cin >> t;
+    map<string, set<string>> mm;
+    f(i, 0, t) {
+        string na;
+        cin >> na;
+        int num;
+        cin >> num;
+        f(j, 0, num) {
+            string nq;
+            cin >> nq;
+            // find it 
+            set<string> temp;
+            temp = mm[na];
+            temp.insert(nq);
+            mm[na] = temp;
+        }
+    }
+    int maxx = 0;
+    for (map<string, set<string>>::iterator i = mm.begin(); i != mm.end(); i++) {
+        auto k = i;
+        k++;
+        for (map<string, set<string>>::iterator j = k; j != mm.end(); j++) {
+            set<string> v;
+            set_intersection(i->second.begin(), i->second.end(), j->second.begin(), j->second.end(), inserter(v, v.end()));
+            // print_v(v);
+            int size_set = v.size() + 1;
+            maxx = max(maxx, size_set);
+        }
+    }
+    cout << maxx;
     return 0;
 }

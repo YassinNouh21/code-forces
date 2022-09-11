@@ -70,17 +70,69 @@ typedef unsigned long long int  uint64;
 // ! USACO FILE 
 void u_file(string s) {
     freopen((s + ".in").c_str(), "r", stdin);
-    // freopen((s + ".out").c_str(), "w", stdout);
+    freopen((s + ".out").c_str(), "w", stdout);
 }
+int steps = 0;
+vi premutation(vi arr, int size) {
+    for (int i = 0; i < size;i++) {
+        // sort(arr.begin(), arr.end());
+        if (arr.size() >= 2) {
+            if ((count(arr.begin(), arr.end(), arr[i]) == arr.size())) break;
+            int f = arr[0];
+            int sss = arr[1];
 
-/* clang-format on */
+            int f_b = arr.back();
+            int s_b = *(arr.end() - 2);
+            // print_v(arr);
+            // cout << f sp sss sp f_b sp s_b e;
+            if (f + sss < f_b + s_b) {
+                arr.erase(arr.begin());
+                arr.erase(arr.begin());
+                arr.insert(arr.begin(), f + sss);
+                steps++;
+            }
+            else {
+                arr.erase(arr.end() - 1);
+                arr.erase(arr.end() - 1);
+                arr.insert(arr.end(), f_b + s_b);
+                steps++;
 
+            }
+        }
+    }
+    return arr;
+}
+// vector<vi> rec(vi arr, int size) {
+//     if (size == 1) {
+//         return global;
+//     }
+//     else {
+//         return rec(premutation(arr, arr.size()), arr.size() - 1);
+//     }
+
+// }
 /* Main()  function */
 int main() {
     // u_file("");
-    
-    set<string> s;
+    int t;
+    cin >> t;
 
-    cout << m[make_pair(1, 2)]  e;
+    while (t--) {
+        int n; cin >> n;
+        vi arr(n);
+        f(i, 0, n) {
+            cin >> arr[i];
+        }
+        vi temp = premutation(arr, arr.size());
+        // print_v(temp);
+        cout << steps e;
+        steps = 0;
+    }
+
+
+
+
+
     return 0;
 }
+

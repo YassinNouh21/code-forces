@@ -74,7 +74,22 @@ void u_file(string s) {
 }
 
 /* clang-format on */
-
+void subArray(int arr[], int n) {
+    int countt = 0;
+    for (int i = 0; i < n; i++) {
+        for (int j = i; j < n; j++) {
+            int sum = 0;
+            int size = 0;
+            for (int k = i; k <= j; k++) {
+                sum += arr[k];
+                size++;
+            }
+            int findd = sum / size;
+            int p = count(arr + j , arr + size, findd);
+            cout << p e ;
+        }
+    }
+}
 /* Main()  function */
 int main() {
     // u_file("");
@@ -84,10 +99,6 @@ int main() {
     f(i, 0, t) {
         cin >> arr[i];
     }
-    f(i, 0, t) {
-        for (int j = i + 1; j < t; j++) {
-            double avg = (double)(arr[i] + arr[j]) / (double)(j + 1);
-        }
-    }
+    subArray(arr, t);
     return 0;
 }

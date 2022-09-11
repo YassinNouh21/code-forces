@@ -21,6 +21,9 @@
         "forward_list": "cpp",
         "initializer_list": "cpp",
         "regex": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "charconv": "cpp",
+        "map": "cpp",
+        "utility": "cpp"
     }
 }

@@ -44,7 +44,7 @@ template <typename T>
 void print_s(set<T>& v) { cout << "{"; for (auto x : v) cout << x << ","; cout << "\b}"; };
 //print array
 template <typename T>
-void print(const T array[], size_t SIZE) { for (size_t i = 0; i < SIZE; i++)   std::cout << array[i] << " "; }
+void print(const T array[], size_t SIZE) { for (size_t i = 0; i < SIZE; i++)   std::cout << array[i] << " ";  cout << "\n"; }
 
 #define MOD 1000000007
 #define PI 3.1415926535897932384626433832795
@@ -74,13 +74,57 @@ void u_file(string s) {
 }
 
 /* clang-format on */
-
+int region_detect(pii f, pii p1) {
+    if (p1.first > f.first && p1.second > f.second) return 1;
+    else if (p1.first > f.first && p1.second < f.second) return 2;
+    else if (p1.first < f.first && p1.second < f.second) return 3;
+    return 0;
+}
 /* Main()  function */
 int main() {
-    // u_file("");
-    
-    set<string> s;
+    u_file("balancing");
+    int t;
+    cin >> t;
+    int temp; cin >> temp;
+    int x[t];
+    int y[t];
+    pii p[t];
+    f(i, 0, t) {
+        int xx;
+        int yy;
+        cin >> xx >> yy;
+        x[i] = xx;
+        y[i] = yy;
+        p[i] = make_pair(xx, yy);
+    }
+    vector<pii> points;
+    sort(x, x + t);
+    sort(y, y + t);
+    int mid = 0;
+    t % 2 == 0 ? mid = (t / 2) - 1 : mid = t / 2;
 
-    cout << m[make_pair(1, 2)]  e;
+    int x1 = x[lower_bound(x, x + t, x[mid]) - x] - 1;
+    int x2 = x[upper_bound(x, x + t, x[mid]) - x] - 1;
+    int y1 = y[lower_bound(y, y + t, y[mid]) - y] - 1;
+    int y2 = y[upper_bound(y, y + t, y[mid]) - y] - 1;
+    points.pb(make_pair(x1, y1));
+    points.pb(make_pair(x1, y2));
+    points.pb(make_pair(x2, y1));
+    points.pb(make_pair(x2, y2));
+
+    int minn = INT_MAX;
+    f(i, 0, 4) {
+        int rg[4] = {};
+        cout << points[i].first sp points[i].second e;
+        f(j, 0, t) {
+            rg[region_detect(points[i], p[j])]++;
+        }
+        print(rg, 4);
+        sort(rg, rg + 4);
+        int maxx = rg[3];
+        minn = min(minn, maxx);
+    }
+    cout << minn  e;
+
     return 0;
 }

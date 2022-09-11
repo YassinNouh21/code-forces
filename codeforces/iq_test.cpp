@@ -70,7 +70,7 @@ typedef unsigned long long int  uint64;
 // ! USACO FILE 
 void u_file(string s) {
     freopen((s + ".in").c_str(), "r", stdin);
-    // freopen((s + ".out").c_str(), "w", stdout);
+    freopen((s + ".out").c_str(), "w", stdout);
 }
 
 /* clang-format on */
@@ -78,9 +78,19 @@ void u_file(string s) {
 /* Main()  function */
 int main() {
     // u_file("");
-    
-    set<string> s;
+    int count = 0;
+    for (ll i = 1; i <= 100000; i++) {
+        if ((i) * (i + 1) * (i + 2) * (i * 3) < 100000) {
+            count++;
+            cout << i  sp(i) * (i + 1) * (i + 2) * (i * 3)  sp count << endl;
+        }
+        else
+        {
+            continue;
+        }
 
-    cout << m[make_pair(1, 2)]  e;
+    }
+    cout << count;
+
     return 0;
 }
