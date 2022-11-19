@@ -25,6 +25,8 @@
         "charconv": "cpp",
         "map": "cpp",
         "utility": "cpp",
-        "limits": "cpp"
+        "limits": "cpp",
+        "set": "cpp",
+        "functional": "cpp"
     }
 }

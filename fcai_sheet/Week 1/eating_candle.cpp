@@ -87,44 +87,35 @@ int main() {
         f(i, 0, size) {
             cin >> arr[i];
         }
-        int sl = 0, sr = 0;
         int l = 0, r = size - 1;
+        int sl = arr[0], sr = arr[r];
         int ans = 0;
-        int count_l = 0, count_r = 0;
         while (l < r) {
-            while (sl <= sr && l <= r) {
-                sl += arr[l];
-                if (sr == sl) {
-                    count_l = l;
+            if (sl < sr) {
+                if (sl == sr) {
+                    ans = l + 1 + size - r;
+
                 }
                 l++;
-                // count_l++;
+                sl += arr[l];
             }
-
-            while (sl >= sr && l <= r) {
-                sr += arr[r];
-                if (sr == sl) {
-                    count_r = r;
+            else {
+                if (sl == sr) {
+                    ans = l + 1 + size - r;
                 }
                 r--;
-                // count_r++;
+                sr += arr[r];
             }
         }
-        cout << count_l sp count_r e;
-        // if (count_l != count_r) {
-        //     cout << count_l + (size - count_r) + 1 e;
+        cout << ans e;
 
-        // }
-        // else {
-        cout << count_l + (size - count_r)  e;
 
-        // }
     }
 
     return 0;
 }
 /*
 1
-5
-1 2 4 8 16
+9
+7 3 20 5 15 1 11 8 10
 */

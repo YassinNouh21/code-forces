@@ -74,7 +74,20 @@ void u_file(string s) {
 }
 
 /* clang-format on */
+bool diff_less_than(si& temps) {
+    if (temps.size() == 0 || temps.size() == 1) {
+        return true;
+    }
+    else {
+        if (abs(*temps.rbegin() - *temps.begin()) <= 1) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
+}
 /* Main()  function */
 int main() {
     // u_file("");
@@ -84,23 +97,42 @@ int main() {
     f(i, 0, t) {
         cin >> arr[i];
     }
-    // int i = 0;
     int j = 0;
-    si store;
-    store.insert(arr[0]);
-    int count = 0;
-    //!check t < 2
-    for (int i = 0; i < t;i++) {
-        while (store.find(arr[j]) != store.end() ) {
-            j++;
+    int mx = -1;
+    int mn = -1;
+    int diff = 0;
+
+    set<int>  temps;
+    int ans = 0;
+    f(i, 0, t) {
+        temps.insert(arr[i]);
+        for (auto k : temps) {
+            cout << k << " ";
         }
+        cout e;
+        mx = (*temps.rbegin());
+        mn = (*temps.begin());
+        diff = (mx - mn);
+        while (diff > 1) {
+            temps.erase(temps.find(arr[j]));
+            for (auto k : temps) {
+                cout << k << " ";
+            }
+            cout e;
+            mx = (*temps.rbegin());
+            mn = (*temps.begin());
+            diff = (mx - mn);
+            j++;
 
+
+        }
+        ans = max(i - j, ans);
     }
-
-
+    cout << ans + 1 e;
     return 0;
 }
 /*
-5
-1 2 3 1 2
+10
+4 5 5 6 7 8 8 8 7 6
+
 */

@@ -85,20 +85,21 @@ int main() {
         cin >> arr[i];
     }
 
+    si temp;
+    int maxx = 0;
     f(i, 0, t) {
-        int count = 1;
-        if (arr[i] == arr[i + 1]) {
-            continue;
+        int size = temp.size();
+        temp.insert(arr[i]);
+        if (temp.size() == size) {
+            maxx = max(size, maxx);
+            temp = {};
+            temp.insert(arr[i]);
+
         }
-        else {
-            for (int j = i + 1; j < t; j++) {
-                if (arr[i] == arr[j]) {
-                    break;
-                }
-                count++;
-            }
-        }
-        cout << count e;
+        // else {
+        //     // temp.insert(arr[i]);
+        // }
     }
+    cout << maxx;
     return 0;
 }
