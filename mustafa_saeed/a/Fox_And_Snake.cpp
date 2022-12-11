@@ -83,20 +83,33 @@
     int main() {
         // u_file("");
         IOS;
-        string s;
-        string s2;
-        cin >> s >> s2;
-        bool flag = true;
-        f(i, 0, s.length()) {
-            if (s[i] != s2[s2.length() - 1 - i]) {
-                flag = false;
+
+        int t, m;
+        cin >> t >> m;
+        int k = 1;
+        cf(i, 1, t) {
+            cf(j, 1, m) {
+                if (i % 2 == 0) {
+                    if (k == 1 && j == m) {
+                        cout << '#';
+                    }
+                    else if (k == -1 && j == 1) {
+                        cout << '#';
+                    }
+                    else {
+                        cout << '.';
+                    }
+                }
+                else {
+                    cout << '#';
+                }
             }
+            if (i % 2 == 0) {
+                k = k * -1;
+            }
+            cout e;
         }
-        if (flag) {
-            yes();
-        }
-        else {
-            no();
-        }
+
+
         return 0;
     }
